@@ -19,10 +19,10 @@ export default function Header() {
         <a
           href="/"
           onClick={scrollToTop}
-          className="whitespace-nowrap text-sm font-semibold tracking-wide text-white"
+          className="inline-flex items-center gap-2 whitespace-nowrap text-sm font-semibold tracking-wide text-white"
         >
-          <span className="sm:hidden">{siteContent.shortName}</span>
-          <span className="hidden sm:inline">{siteContent.name}</span>
+          <span>🐼</span>
+          <span>MMMM</span>
         </a>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-x-8">
           <nav className="flex flex-wrap items-center gap-x-4 gap-y-1 sm:gap-x-8">

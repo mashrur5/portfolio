@@ -9,7 +9,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: `${siteContent.name} — ${siteContent.role}`,
+  title: "MMMM",
   description: siteContent.tagline,
 };
 
