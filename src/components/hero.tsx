@@ -2,37 +2,64 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import DatabaseDiagram from "@/components/database-diagram";
+import { siteContent } from "@/data/site-content";
+import ConstellationBackground from "@/components/constellation-background";
+import { SOCIAL_LINKS, SocialLink } from "@/components/social-icons";
+
+const TAGLINE_HIGHLIGHTS = ["products", "code", "scale"];
+const TAGLINE_PATTERN = new RegExp(`(${TAGLINE_HIGHLIGHTS.join("|")})`, "g");
+
+function renderTagline(text: string) {
+  return text.split(TAGLINE_PATTERN).map((part, i) =>
+    TAGLINE_HIGHLIGHTS.includes(part) ? (
+      <span key={i} className="font-extrabold text-cyan-300">
+        {part}
+      </span>
+    ) : (
+      <span key={i}>{part}</span>
+    ),
+  );
+}
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-[#05070f]">
-      <Image
-        src="/hero-character.png"
-        alt="Illustration of the site owner working at a desk with multiple curved monitors, in front of the Toronto skyline at night with the CN Tower visible."
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#05070f]/60 via-transparent to-[#05070f]/20" />
-
-      <DatabaseDiagram />
+    <section
+      id="profile"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#05070f] px-6 py-24"
+    >
+      <ConstellationBackground />
 
       <motion.div
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-slate-400"
-        initial={{ opacity: 0 }}
-        animate={reduceMotion ? { opacity: 0.7 } : { opacity: [0.3, 0.9, 0.3], y: [0, 6, 0] }}
-        transition={reduceMotion ? undefined : { duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        aria-hidden="true"
+        className="relative z-10 flex max-w-xl flex-col items-center text-center"
+        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
       >
-        <svg width="22" height="34" viewBox="0 0 22 34" fill="none">
-          <rect x="1" y="1" width="20" height="32" rx="10" stroke="currentColor" strokeWidth="1.5" />
-          <circle cx="11" cy="10" r="2.5" fill="currentColor" />
-        </svg>
+        <div className="relative mb-6 h-24 w-24 overflow-hidden rounded-full border border-white/15 bg-white/5 backdrop-blur-sm sm:h-28 sm:w-28">
+          <Image
+            src="/profile-photo.jpg"
+            alt={siteContent.name}
+            fill
+            priority
+            unoptimized
+            sizes="112px"
+            className="object-cover object-[50%_20%]"
+          />
+        </div>
+
+        <h1 className="text-3xl font-extrabold text-white sm:text-5xl">{siteContent.name}</h1>
+
+        <p className="mt-4 max-w-md text-sm font-medium text-slate-100 sm:text-base">
+          {renderTagline(siteContent.tagline)}
+        </p>
+
+        <div className="mt-8 flex items-center gap-5 text-slate-300">
+          {SOCIAL_LINKS.map((item) => (
+            <SocialLink key={item.label} {...item} className="transition-colors hover:text-cyan-300" />
+          ))}
+        </div>
       </motion.div>
     </section>
   );

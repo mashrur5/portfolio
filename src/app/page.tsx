@@ -1,9 +1,13 @@
+import Header from "@/components/header";
 import Hero from "@/components/hero";
+import FloatingSocials from "@/components/floating-socials";
 
 export default function Home() {
   return (
-    <main>
+    <main className="min-h-screen bg-[#05070f]">
+      <Header />
       <Hero />
+      <FloatingSocials />
     </main>
   );
 }
