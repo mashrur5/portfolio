@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { AWARDS, type Award } from "@/data/awards";
@@ -98,6 +98,11 @@ function AwardCard({
 export default function Awards() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selected = AWARDS.find((a) => a.id === selectedId) ?? null;
+
+  useEffect(() => {
+    const openId = new URLSearchParams(window.location.search).get("open");
+    if (openId && AWARDS.some((a) => a.id === openId)) setSelectedId(openId);
+  }, []);
 
   return (
     <main className="relative h-full min-h-0 overflow-hidden bg-[#05070f]">

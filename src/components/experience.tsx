@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExperienceList from "@/components/experience-list";
 import ExperienceDetailModal from "@/components/experience-detail-modal";
 import ExperienceChoiceModal from "@/components/experience-choice-modal";
@@ -22,6 +22,14 @@ export default function Experience() {
 
   const entries = country === "canada" ? CANADA_EXPERIENCE : BANGLADESH_EXPERIENCE;
   const selectedEntry = ALL_EXPERIENCE.find((entry) => entry.id === selectedId) ?? null;
+
+  useEffect(() => {
+    const openId = new URLSearchParams(window.location.search).get("open");
+    const entry = ALL_EXPERIENCE.find((e) => e.id === openId);
+    if (!entry) return;
+    setCountry(CANADA_EXPERIENCE.includes(entry) ? "canada" : "bangladesh");
+    setSelectedId(entry.id);
+  }, []);
   const choiceEntries = pendingChoiceIds
     ? pendingChoiceIds
         .map((id) => ALL_EXPERIENCE.find((entry) => entry.id === id))

@@ -11,5 +11,13 @@ export const siteContent = {
     discord: "mashrur2108",
     x: "https://x.com/m4_mash",
     resume: "/resume.pdf",
+    transcript: "/transcript.pdf",
   },
+};
+
+export const education = {
+  degree: "International Bachelor of Science in Computer Science",
+  school: "Lassonde School of Engineering, York University",
+  gpa: "Cumulative GPA 8.27/9.00",
+  honour: "Member of Dean's Honour Roll",
 };

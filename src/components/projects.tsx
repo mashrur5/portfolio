@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { PROJECTS } from "@/data/projects";
 import ProjectDetailModal from "@/components/project-detail-modal";
@@ -8,6 +8,11 @@ import ProjectDetailModal from "@/components/project-detail-modal";
 export default function Projects() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selected = PROJECTS.find((p) => p.id === selectedId) ?? null;
+
+  useEffect(() => {
+    const openId = new URLSearchParams(window.location.search).get("open");
+    if (openId && PROJECTS.some((p) => p.id === openId)) setSelectedId(openId);
+  }, []);
 
   return (
     <main className="flex min-h-screen flex-col sm:h-full sm:min-h-0">

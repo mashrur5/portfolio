@@ -31,8 +31,7 @@ type FeaturedCard = {
   title: string;
   subtitle: string;
   description: React.ReactNode;
-  image?: string;
-  icon?: string;
+  image: string;
   href: string;
   linkLabel: string;
 };
@@ -43,17 +42,17 @@ const CARDS: FeaturedCard[] = [
     title: experience.title,
     subtitle: experience.organization,
     description: experience.highlights[0],
-    image: experience.images?.[0],
-    href: "/experience",
+    image: experience.images![0],
+    href: `/experience?open=${experience.id}`,
     linkLabel: "Read more about my Experiences",
   },
   {
-    eyebrow: project.subtitle,
+    eyebrow: "June 2026 – Present",
     title: project.title,
-    subtitle: "Trinidad & Tobago Ministry of Agriculture, Land and Fisheries",
+    subtitle: project.subtitle,
     description: project.tagline,
     image: project.thumbnail,
-    href: "/projects",
+    href: `/projects?open=${project.id}`,
     linkLabel: "Read more about my Projects",
   },
   {
@@ -61,17 +60,17 @@ const CARDS: FeaturedCard[] = [
     title: leadership.role,
     subtitle: leadership.organization,
     description: renderBold(leadership.bullets[0]),
-    icon: "🦁",
+    image: "/featured/lions-international.jpg",
     href: "/leadership",
     linkLabel: "Read more about my Leadership",
   },
   {
-    eyebrow: award.organization,
-    title: award.title,
-    subtitle: award.worth ?? "",
-    description: `Awarded by ${award.organization}${award.worth ? ` — worth ${award.worth}` : ""}.`,
-    icon: "🎓",
-    href: "/awards",
+    eyebrow: "2024",
+    title: `${award.title} | ${award.worth}`,
+    subtitle: award.organization,
+    description: "Awarded for academic excellence as an incoming international student.",
+    image: "/featured/scholarship-web.jpg",
+    href: `/awards?open=${award.id}`,
     linkLabel: "Read more about my Awards",
   },
 ];
@@ -86,17 +85,13 @@ function Card({ card, index }: { card: FeaturedCard; index: number }) {
       className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-colors hover:border-cyan-300/40"
     >
       <div className="relative h-40 w-full shrink-0 overflow-hidden bg-white/5 sm:h-48">
-        {card.image ? (
-          <Image
-            src={card.image}
-            alt=""
-            fill
-            sizes="(max-width: 640px) 100vw, 50vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center text-5xl">{card.icon}</div>
-        )}
+        <Image
+          src={card.image}
+          alt=""
+          fill
+          sizes="(max-width: 640px) 100vw, 50vw"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] via-transparent to-transparent" />
       </div>
 
@@ -131,7 +126,7 @@ export default function Featured() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-2xl font-extrabold text-white sm:text-3xl"
         >
-          Featured Work
+          Featured
         </motion.h2>
 
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
