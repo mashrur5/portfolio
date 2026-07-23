@@ -117,7 +117,7 @@ function Card({ card, index }: { card: FeaturedCard; index: number }) {
 
 export default function Featured() {
   return (
-    <section id="featured" className="relative bg-[#05070f] px-6 py-20 sm:px-12 sm:py-28">
+    <section id="featured" className="relative bg-[#05070f] px-6 pt-10 pb-20 sm:px-12 sm:pt-14 sm:pb-28">
       <div className="mx-auto max-w-5xl">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}

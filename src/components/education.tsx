@@ -5,7 +5,7 @@ import { education, siteContent } from "@/data/site-content";
 
 export default function Education() {
   return (
-    <section id="education" className="relative bg-[#05070f] px-6 py-20 sm:px-12 sm:py-28">
+    <section id="education" className="relative bg-[#05070f] px-6 pt-20 pb-10 sm:px-12 sm:pt-28 sm:pb-14">
       <div className="mx-auto max-w-5xl">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
