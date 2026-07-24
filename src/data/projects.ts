@@ -154,10 +154,12 @@ export const PROJECTS: Project[] = [
         type: "list",
         items: [
           "Guest: Bluetooth HID scanner-compatible chip lookup. A physical chip reader pairs as a Bluetooth keyboard and types directly into the focused input field. No Web Bluetooth or HID API needed.",
-          "Farmer: Register animals, view personal registry, manage profile",
-          "Support: Full national animal registry and user management",
-          "Admin: Everything in support plus staff invitation system, farmer account creation with real-time password validation, and login activity monitoring",
         ],
+      },
+      { type: "image", images: ["/projects/national-livestock-registry/guest-dashboard.png"] },
+      {
+        type: "list",
+        items: ["Farmer: Register animals, view personal registry, manage profile"],
       },
       {
         type: "image",
@@ -165,6 +167,30 @@ export const PROJECTS: Project[] = [
           "/projects/national-livestock-registry/farmer-dashboard.png",
           "/projects/national-livestock-registry/farmer-lookup.png",
           "/projects/national-livestock-registry/farmer-register.png",
+        ],
+      },
+      {
+        type: "list",
+        items: ["Support: Full national animal registry and user management"],
+      },
+      {
+        type: "image",
+        images: [
+          "/projects/national-livestock-registry/support-dashboard.png",
+          "/projects/national-livestock-registry/support-animal-registry.png",
+        ],
+      },
+      {
+        type: "list",
+        items: [
+          "Admin: Everything in support plus staff invitation system, farmer account creation with real-time password validation, and login activity monitoring",
+        ],
+      },
+      {
+        type: "image",
+        images: [
+          "/projects/national-livestock-registry/admin-dashboard.png",
+          "/projects/national-livestock-registry/admin-audit-log.png",
         ],
       },
       {
@@ -176,14 +202,6 @@ export const PROJECTS: Project[] = [
       {
         type: "paragraph",
         text: "A field-facing app for farmers and vets at the point of scanning. The primary use case is simple: scan a chip with a physical reader and see the animal's owner instantly. The HID scanner pairs as a Bluetooth keyboard and fires searches automatically with no special driver or API needed.",
-      },
-      {
-        type: "image",
-        images: [
-          "/projects/national-livestock-registry/admin-dashboard.png",
-          "/projects/national-livestock-registry/support-dashboard.png",
-          "/projects/national-livestock-registry/animal-registry.png",
-        ],
       },
       { type: "heading", text: "Tech Stack" },
       {
