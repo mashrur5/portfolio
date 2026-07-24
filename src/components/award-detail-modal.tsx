@@ -42,7 +42,11 @@ export default function AwardDetailModal({
             transition={{ duration: 0.25, ease: "easeOut" }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative h-44 w-full shrink-0 bg-gradient-to-br from-cyan-400/20 via-[#05070f] to-cyan-300/10 sm:h-56">
+            <div
+              className={`relative w-full shrink-0 bg-gradient-to-br from-cyan-400/20 via-[#05070f] to-cyan-300/10 ${
+                award.portrait ? "h-80 sm:h-[28rem]" : "h-44 sm:h-56"
+              }`}
+            >
               {!imageFailed && (
                 <Image
                   src={award.thumbnail}

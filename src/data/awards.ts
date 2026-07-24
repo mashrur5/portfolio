@@ -9,6 +9,8 @@ export type Award = {
   worth?: string;
   detail?: string;
   thumbnail: string;
+  /** Set when the cover photo is taller than it is wide, so the modal gives it more height instead of cropping it. */
+  portrait?: boolean;
   bullets?: AwardBullet[];
   paragraph?: string;
   readMoreLabel?: string;
@@ -45,6 +47,7 @@ export const AWARDS: Award[] = [
     organization: "Multiple Organizations",
     detail: "3 bronze, 1 silver",
     thumbnail: "/awards/inter-school-swimming.jpg",
+    portrait: true,
     bullets: [
       { text: "🥈 200m Freestyle Relay in ISD Secondary Swim Meet" },
       { text: "🥉 50m Backstroke Swimming in ISD Secondary Swim Meet" },
@@ -63,6 +66,7 @@ export const AWARDS: Award[] = [
     title: "Best Goalkeeper of the Tournament",
     organization: "B24 Futsal Cup 2022",
     thumbnail: "/awards/b24-best-goalkeeper.jpg",
+    portrait: true,
   },
   {
     id: "daily-star-award",
