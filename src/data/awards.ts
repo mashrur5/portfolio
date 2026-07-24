@@ -33,6 +33,12 @@ export const AWARDS: Award[] = [
         text: "Covers full tuition and most of living expenses for my 4 years of undergraduate studies at York University",
       },
     ],
+    links: [
+      {
+        label: "York University International Scholarship Recipients 2024",
+        url: "https://futurestudents.yorku.ca/scholarship/international-recipients/2024",
+      },
+    ],
   },
   {
     id: "academic-excellence",
@@ -121,11 +127,5 @@ export const AWARDS: Award[] = [
       "Built HirezzAI, an AI resume analyzer that gives you specific, job-matched feedback tied to the exact posting you're applying to and not generic advice. Then fixes it and hands you a file you can submit immediately.",
     readMoreLabel: "Read more about HirezzAI",
     readMoreProjectId: "hirezz-ai",
-    links: [
-      {
-        label: "York University International Scholarship Recipients 2024",
-        url: "https://futurestudents.yorku.ca/scholarship/international-recipients/2024",
-      },
-    ],
   },
 ];
