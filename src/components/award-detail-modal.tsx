@@ -43,8 +43,11 @@ export default function AwardDetailModal({
             onClick={(e) => e.stopPropagation()}
           >
             <div
-              className="relative max-h-[28rem] min-h-[11rem] w-full shrink-0 bg-gradient-to-br from-cyan-400/20 via-[#05070f] to-cyan-300/10"
-              style={{ aspectRatio: award.thumbnailAspect }}
+              className="relative min-h-[11rem] w-full shrink-0 bg-gradient-to-br from-cyan-400/20 via-[#05070f] to-cyan-300/10"
+              style={{
+                aspectRatio: award.thumbnailAspect,
+                maxHeight: `${award.thumbnailMaxHeightRem ?? 28}rem`,
+              }}
             >
               {!imageFailed && (
                 <Image
@@ -53,6 +56,7 @@ export default function AwardDetailModal({
                   fill
                   sizes="512px"
                   className="object-cover"
+                  style={{ objectPosition: award.thumbnailPosition ?? "center" }}
                   onError={() => setFailedSrc(award.thumbnail)}
                 />
               )}

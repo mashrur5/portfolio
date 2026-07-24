@@ -11,6 +11,10 @@ export type Award = {
   thumbnail: string;
   /** Displayed width / height of the cover photo, so the modal's cover box matches its real shape instead of cropping it. Account for EXIF rotation, not just raw file dimensions. */
   thumbnailAspect: number;
+  /** CSS object-position for the cover photo, for when the subject isn't centered (e.g. "center bottom" to keep the bottom of the frame in view). Defaults to "center". */
+  thumbnailPosition?: string;
+  /** Overrides the default 28rem cap on the cover photo's height, in rem, for photos that need more room to avoid cropping. */
+  thumbnailMaxHeightRem?: number;
   bullets?: AwardBullet[];
   paragraph?: string;
   readMoreLabel?: string;
@@ -25,7 +29,7 @@ export const AWARDS: Award[] = [
     organization: "York University",
     worth: "$180,000",
     thumbnail: "/awards/presidents-scholarship.jpg",
-    thumbnailAspect: 1600 / 1066,
+    thumbnailAspect: 1.15,
     bullets: [
       {
         text: "1 of 20 students from around the world and 1 of 2 students from Bangladesh to receive the award",
@@ -56,6 +60,7 @@ export const AWARDS: Award[] = [
     detail: "3 bronze, 1 silver",
     thumbnail: "/awards/inter-school-swimming.jpg",
     thumbnailAspect: 1199 / 1600,
+    thumbnailPosition: "center bottom",
     bullets: [
       { text: "🥈 200m Freestyle Relay in ISD Secondary Swim Meet" },
       { text: "🥉 50m Backstroke Swimming in ISD Secondary Swim Meet" },
@@ -81,7 +86,7 @@ export const AWARDS: Award[] = [
     title: "The Daily Star Award",
     organization: "The Daily Star",
     thumbnail: "/awards/daily-star-award.jpg",
-    thumbnailAspect: 1216 / 841,
+    thumbnailAspect: 1.15,
     bullets: [
       {
         text: "Received The Daily Star Award 2022 for 5A* and 1A in Cambridge O-Level Examination.",
@@ -104,6 +109,7 @@ export const AWARDS: Award[] = [
     worth: "$2,000",
     thumbnail: "/awards/lassonde-entrance-scholarship.jpg",
     thumbnailAspect: 1200 / 1600,
+    thumbnailMaxHeightRem: 44,
   },
   {
     id: "best-startup-experience",
