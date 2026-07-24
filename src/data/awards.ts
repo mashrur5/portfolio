@@ -9,8 +9,8 @@ export type Award = {
   worth?: string;
   detail?: string;
   thumbnail: string;
-  /** Set when the cover photo is taller than it is wide, so the modal gives it more height instead of cropping it. */
-  portrait?: boolean;
+  /** Displayed width / height of the cover photo, so the modal's cover box matches its real shape instead of cropping it. Account for EXIF rotation, not just raw file dimensions. */
+  thumbnailAspect: number;
   bullets?: AwardBullet[];
   paragraph?: string;
   readMoreLabel?: string;
@@ -25,6 +25,7 @@ export const AWARDS: Award[] = [
     organization: "York University",
     worth: "$180,000",
     thumbnail: "/awards/presidents-scholarship.jpg",
+    thumbnailAspect: 1600 / 1066,
     bullets: [
       {
         text: "1 of 20 students from around the world and 1 of 2 students from Bangladesh to receive the award",
@@ -46,6 +47,7 @@ export const AWARDS: Award[] = [
     organization: "York University",
     worth: "$7,500",
     thumbnail: "/awards/academic-excellence.jpg",
+    thumbnailAspect: 1600 / 1200,
   },
   {
     id: "inter-school-swimming",
@@ -53,7 +55,7 @@ export const AWARDS: Award[] = [
     organization: "Multiple Organizations",
     detail: "3 bronze, 1 silver",
     thumbnail: "/awards/inter-school-swimming.jpg",
-    portrait: true,
+    thumbnailAspect: 1199 / 1600,
     bullets: [
       { text: "🥈 200m Freestyle Relay in ISD Secondary Swim Meet" },
       { text: "🥉 50m Backstroke Swimming in ISD Secondary Swim Meet" },
@@ -72,13 +74,14 @@ export const AWARDS: Award[] = [
     title: "Best Goalkeeper of the Tournament",
     organization: "B24 Futsal Cup 2022",
     thumbnail: "/awards/b24-best-goalkeeper.jpg",
-    portrait: true,
+    thumbnailAspect: 1200 / 1600,
   },
   {
     id: "daily-star-award",
     title: "The Daily Star Award",
     organization: "The Daily Star",
     thumbnail: "/awards/daily-star-award.jpg",
+    thumbnailAspect: 1216 / 841,
     bullets: [
       {
         text: "Received The Daily Star Award 2022 for 5A* and 1A in Cambridge O-Level Examination.",
@@ -100,7 +103,7 @@ export const AWARDS: Award[] = [
     organization: "York University",
     worth: "$2,000",
     thumbnail: "/awards/lassonde-entrance-scholarship.jpg",
-    portrait: true,
+    thumbnailAspect: 1200 / 1600,
   },
   {
     id: "best-startup-experience",
@@ -108,6 +111,7 @@ export const AWARDS: Award[] = [
     organization: "Bergeron Entrepreneurs in Science and Technology",
     worth: "$1,500",
     thumbnail: "/awards/best-startup-experience.jpeg",
+    thumbnailAspect: 1600 / 1066,
     paragraph:
       "Built Student Helper, an AI-powered university learning platform that predicts your final exam score, adapts your quizzes in real time, and tracks your knowledge gaps, all built on top of your actual academic data.",
     readMoreLabel: "Read more about Student Helper",
@@ -124,6 +128,7 @@ export const AWARDS: Award[] = [
     title: "Audience Choice at Sandcastle Hackathon",
     organization: "Sandbox",
     thumbnail: "/awards/sandcastle-hackathon.jpeg",
+    thumbnailAspect: 1206 / 667,
     paragraph:
       "Built HirezzAI, an AI resume analyzer that gives you specific, job-matched feedback tied to the exact posting you're applying to and not generic advice. Then fixes it and hands you a file you can submit immediately.",
     readMoreLabel: "Read more about HirezzAI",

@@ -43,9 +43,8 @@ export default function AwardDetailModal({
             onClick={(e) => e.stopPropagation()}
           >
             <div
-              className={`relative w-full shrink-0 bg-gradient-to-br from-cyan-400/20 via-[#05070f] to-cyan-300/10 ${
-                award.portrait ? "h-80 sm:h-[28rem]" : "h-44 sm:h-56"
-              }`}
+              className="relative max-h-[28rem] min-h-[11rem] w-full shrink-0 bg-gradient-to-br from-cyan-400/20 via-[#05070f] to-cyan-300/10"
+              style={{ aspectRatio: award.thumbnailAspect }}
             >
               {!imageFailed && (
                 <Image
