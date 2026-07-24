@@ -27,7 +27,7 @@ export default function Hero() {
   return (
     <section
       id="profile"
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#05070f] px-6 py-24"
+      className="relative flex min-h-[calc(100dvh-119px)] w-full items-center justify-center overflow-hidden bg-[#05070f] px-6 py-24 sm:min-h-[calc(100vh-63px)]"
     >
       <ConstellationBackground />
 
