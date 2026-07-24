@@ -4,7 +4,14 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Project, ProjectBlock } from "@/data/projects";
-import { GithubIcon, LinkedinIcon, DevpostIcon, WebsiteIcon, SlidesIcon } from "@/components/social-icons";
+import {
+  GithubIcon,
+  LinkedinIcon,
+  DevpostIcon,
+  WebsiteIcon,
+  SlidesIcon,
+  YoutubeIcon,
+} from "@/components/social-icons";
 
 const PROJECT_LINK_ICON = {
   linkedin: LinkedinIcon,
@@ -12,6 +19,7 @@ const PROJECT_LINK_ICON = {
   devpost: DevpostIcon,
   website: WebsiteIcon,
   slides: SlidesIcon,
+  youtube: YoutubeIcon,
 };
 
 function renderBold(text: string) {
@@ -58,6 +66,22 @@ function Block({ block }: { block: ProjectBlock }) {
             </div>
           ))}
         </dl>
+      );
+    case "image":
+      return (
+        <div className="mt-5 flex flex-wrap justify-center gap-4 py-2">
+          {block.images.map((src, i) => (
+            <div
+              key={src}
+              className={`overflow-hidden rounded-lg border border-white/10 shadow-xl shadow-black/40 ${
+                i % 2 === 0 ? "rotate-[-2deg]" : "rotate-[2deg]"
+              } ${block.images.length === 1 ? "w-full max-w-sm" : "w-[42%] min-w-[140px]"}`}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={src} alt="" className="w-full object-cover" />
+            </div>
+          ))}
+        </div>
       );
   }
 }

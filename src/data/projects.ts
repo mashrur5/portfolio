@@ -3,12 +3,13 @@ export type ProjectBlock =
   | { type: "subheading"; text: string }
   | { type: "paragraph"; text: string }
   | { type: "list"; items: string[] }
-  | { type: "keyValue"; items: { key: string; value: string }[] };
+  | { type: "keyValue"; items: { key: string; value: string }[] }
+  | { type: "image"; images: string[] };
 
 export type ProjectLink = {
   label: string;
   url: string;
-  icon: "linkedin" | "github" | "devpost" | "website" | "slides";
+  icon: "linkedin" | "github" | "devpost" | "website" | "slides" | "youtube";
 };
 
 export type Project = {
@@ -36,6 +37,11 @@ export const PROJECTS: Project[] = [
         icon: "linkedin",
       },
       { label: "GitHub", url: "https://lnkd.in/eWxYsRcC", icon: "github" },
+      {
+        label: "YouTube",
+        url: "https://youtube.com/shorts/CmYIwBjBeI4?si=M_EtK-yoi3LnI8Oe",
+        icon: "youtube",
+      },
     ],
     blocks: [
       { type: "heading", text: "The Problem" },
@@ -48,6 +54,7 @@ export const PROJECTS: Project[] = [
         type: "paragraph",
         text: "A local-first, edge-compute urban risk intelligence platform running entirely on a single NVIDIA Grace Blackwell GB10 node with **zero** cloud API dependencies. Built at the NVIDIA Spark Hack Series in Toronto, hosted by NVIDIA, Antler, and ASUS. Team of **4**.",
       },
+      { type: "image", images: ["/projects/delatio/team-photo.jpeg"] },
       { type: "paragraph", text: "The platform runs two simultaneous intelligence loops:" },
       { type: "subheading", text: "Policy Reasoning Engine" },
       {
@@ -153,13 +160,30 @@ export const PROJECTS: Project[] = [
         ],
       },
       {
+        type: "image",
+        images: [
+          "/projects/national-livestock-registry/farmer-dashboard.png",
+          "/projects/national-livestock-registry/farmer-lookup.png",
+          "/projects/national-livestock-registry/farmer-register.png",
+        ],
+      },
+      {
         type: "paragraph",
         text: "The login page features a hand-coded SVG Caribbean map with SMIL animation. The sign-in card is absolutely positioned at Trinidad & Tobago's exact coordinates on the map.",
       },
+      { type: "image", images: ["/projects/national-livestock-registry/login.png"] },
       { type: "subheading", text: "Mobile App" },
       {
         type: "paragraph",
         text: "A field-facing app for farmers and vets at the point of scanning. The primary use case is simple: scan a chip with a physical reader and see the animal's owner instantly. The HID scanner pairs as a Bluetooth keyboard and fires searches automatically with no special driver or API needed.",
+      },
+      {
+        type: "image",
+        images: [
+          "/projects/national-livestock-registry/admin-dashboard.png",
+          "/projects/national-livestock-registry/support-dashboard.png",
+          "/projects/national-livestock-registry/animal-registry.png",
+        ],
       },
       { type: "heading", text: "Tech Stack" },
       {
@@ -213,6 +237,10 @@ export const PROJECTS: Project[] = [
         type: "paragraph",
         text: "Built at Sandcastle by Sandbox, an invite-only **30**-builder hackathon sprint. Awarded Audience Choice. Reached **100+** users on day one.",
       },
+      {
+        type: "image",
+        images: ["/projects/hirezz-ai/team-huddle.jpeg", "/projects/hirezz-ai/prize-unboxing.jpeg"],
+      },
       { type: "heading", text: "How the Scoring Works" },
       { type: "paragraph", text: "The resume gets scored across **5** dimensions:" },
       {
@@ -246,6 +274,7 @@ export const PROJECTS: Project[] = [
           "ElevenLabs converts the diagnosis to audio with a Web Speech API fallback",
         ],
       },
+      { type: "image", images: ["/projects/hirezz-ai/meme-report.jpeg"] },
       {
         type: "paragraph",
         text: "Every external API has a tested fallback. Mock data for Gemini, a local regex dictionary for BrainRot, static template URLs for Imgflip. The app never breaks during a demo.",
