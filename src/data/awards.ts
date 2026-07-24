@@ -15,6 +15,8 @@ export type Award = {
   thumbnailPosition?: string;
   /** Overrides the default 28rem cap on the cover photo's height, in rem, for photos that need more room to avoid cropping. */
   thumbnailMaxHeightRem?: number;
+  /** "contain" shows the photo un-cropped with blank space below it (for the caption to sit in) instead of filling the whole box. Use when important content sits at the very edge the caption overlay would otherwise cover. */
+  thumbnailFit?: "cover" | "contain";
   bullets?: AwardBullet[];
   paragraph?: string;
   readMoreLabel?: string;
@@ -59,8 +61,10 @@ export const AWARDS: Award[] = [
     organization: "Multiple Organizations",
     detail: "3 bronze, 1 silver",
     thumbnail: "/awards/inter-school-swimming.jpg",
-    thumbnailAspect: 1199 / 1600,
-    thumbnailPosition: "center bottom",
+    thumbnailAspect: 0.6,
+    thumbnailPosition: "center top",
+    thumbnailFit: "contain",
+    thumbnailMaxHeightRem: 54,
     bullets: [
       { text: "🥈 200m Freestyle Relay in ISD Secondary Swim Meet" },
       { text: "🥉 50m Backstroke Swimming in ISD Secondary Swim Meet" },

@@ -55,7 +55,7 @@ export default function AwardDetailModal({
                   alt=""
                   fill
                   sizes="512px"
-                  className="object-cover"
+                  className={award.thumbnailFit === "contain" ? "object-contain" : "object-cover"}
                   style={{ objectPosition: award.thumbnailPosition ?? "center" }}
                   onError={() => setFailedSrc(award.thumbnail)}
                 />
