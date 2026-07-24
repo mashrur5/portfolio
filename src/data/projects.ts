@@ -408,6 +408,14 @@ export const PROJECTS: Project[] = [
       { type: "paragraph", text: "**$20** per semester per user." },
       { type: "heading", text: "Why We Win" },
       { type: "paragraph", text: "Smart algorithms. Research backed. Made by us, for us." },
+      {
+        type: "image",
+        images: [
+          "/projects/student-helper/award-solo.jpeg",
+          "/projects/student-helper/team-with-check.jpeg",
+          "/projects/student-helper/team-with-judges.jpeg",
+        ],
+      },
     ],
   },
 ];
