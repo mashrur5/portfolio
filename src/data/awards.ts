@@ -100,6 +100,7 @@ export const AWARDS: Award[] = [
     organization: "York University",
     worth: "$2,000",
     thumbnail: "/awards/lassonde-entrance-scholarship.jpg",
+    portrait: true,
   },
   {
     id: "best-startup-experience",
