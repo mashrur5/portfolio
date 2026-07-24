@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Award } from "@/data/awards";
 
@@ -68,7 +69,7 @@ export default function AwardDetailModal({
               </div>
             </div>
 
-            <div className="p-6 sm:p-8">
+            <div className="overflow-y-auto p-6 sm:p-8">
               <dl className="space-y-2">
                 {award.worth && (
                   <div className="flex flex-col gap-0.5 text-sm sm:flex-row sm:gap-2">
@@ -83,6 +84,64 @@ export default function AwardDetailModal({
                   </div>
                 )}
               </dl>
+
+              {award.bullets && award.bullets.length > 0 && (
+                <ul className="mt-4 space-y-2">
+                  {award.bullets.map((bullet) => (
+                    <li
+                      key={bullet.text}
+                      className="flex items-start gap-2 text-sm leading-relaxed text-slate-300"
+                    >
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-cyan-300/70" />
+                      <span>
+                        {bullet.text}
+                        {bullet.url && (
+                          <a
+                            href={bullet.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="View post"
+                            className="ml-1.5 text-cyan-300 hover:text-cyan-200"
+                          >
+                            🔗
+                          </a>
+                        )}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {award.paragraph && (
+                <p className="mt-4 text-sm leading-relaxed text-slate-300">
+                  {award.paragraph}{" "}
+                  {award.readMoreProjectId && (
+                    <Link
+                      href={`/projects?open=${award.readMoreProjectId}`}
+                      className="font-semibold text-cyan-300 hover:text-cyan-200"
+                    >
+                      {award.readMoreLabel}
+                    </Link>
+                  )}
+                </p>
+              )}
+
+              {award.links && award.links.length > 0 && (
+                <div className="mt-5 flex flex-col gap-2">
+                  {award.links.map((link) => (
+                    <a
+                      key={link.url}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-cyan-300/50 bg-white/5 px-4 py-2 text-sm font-semibold text-cyan-300 backdrop-blur-sm transition-colors hover:bg-cyan-300/10"
+                    >
+                      <span aria-hidden>🔗</span>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
         </motion.div>
