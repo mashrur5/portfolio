@@ -95,8 +95,8 @@ function LeadershipCard({ entry }: { entry: LeadershipEntry }) {
 export default function Leadership() {
   return (
     <main className="mx-auto w-full max-w-4xl px-6 py-12 sm:px-12 sm:py-16">
-      <h1 className="text-2xl font-extrabold text-white sm:text-3xl">Leadership</h1>
-      <div className="mt-8 flex flex-col gap-5">
+      <h1 className="hidden text-2xl font-extrabold text-white sm:block sm:text-3xl">Leadership</h1>
+      <div className="flex flex-col gap-5 sm:mt-8">
         {LEADERSHIP.map((entry) => (
           <LeadershipCard key={entry.id} entry={entry} />
         ))}

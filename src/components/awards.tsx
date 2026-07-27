@@ -106,7 +106,7 @@ export default function Awards() {
 
   return (
     <main className="relative h-full min-h-0 overflow-hidden bg-[#05070f]">
-      <h1 className="absolute top-4 left-6 z-10 text-xl font-extrabold text-white sm:top-6 sm:left-12 sm:text-2xl lg:text-3xl">
+      <h1 className="absolute top-4 left-6 z-10 hidden text-xl font-extrabold text-white sm:top-6 sm:left-12 sm:block sm:text-2xl lg:text-3xl">
         Awards
       </h1>
 
@@ -172,7 +172,7 @@ export default function Awards() {
       </div>
 
       {/* Mobile: small trophy strip, then every card sized to fit one screen with no scroll */}
-      <div className="absolute inset-0 flex flex-col gap-2 px-6 pt-14 pb-3 sm:hidden">
+      <div className="absolute inset-0 flex flex-col gap-2 px-6 pt-4 pb-3 sm:hidden">
         <div className="mx-auto aspect-square w-20 shrink-0">
           <Trophy />
         </div>

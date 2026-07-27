@@ -13,8 +13,21 @@ export default function Header() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  function navLinkClass(href: string) {
+    const isActive = pathname === href;
+    return `text-xs font-medium transition-colors hover:text-cyan-300 sm:text-sm sm:text-slate-300 ${
+      isActive ? "text-cyan-300 underline decoration-2 underline-offset-4 sm:no-underline" : "text-slate-300"
+    }`;
+  }
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#05070f]/80 backdrop-blur-md">
+    <header
+      className={
+        isHome
+          ? "sticky top-4 z-50 mx-4 rounded-2xl border border-white/10 bg-[#05070f]/80 shadow-lg shadow-black/30 backdrop-blur-md sm:mx-8"
+          : "sticky top-0 z-50 border-b border-white/10 bg-[#05070f]/80 backdrop-blur-md"
+      }
+    >
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-6 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-2 sm:px-12 sm:py-4">
         <a
           href="/"
@@ -26,28 +39,16 @@ export default function Header() {
         </a>
         <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:gap-x-8 sm:gap-y-2">
           <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 sm:gap-x-8">
-            <a
-              href="/experience"
-              className="text-xs font-medium text-slate-300 transition-colors hover:text-cyan-300 sm:text-sm"
-            >
+            <a href="/experience" className={navLinkClass("/experience")}>
               Experience
             </a>
-            <a
-              href="/projects"
-              className="text-xs font-medium text-slate-300 transition-colors hover:text-cyan-300 sm:text-sm"
-            >
+            <a href="/projects" className={navLinkClass("/projects")}>
               Projects
             </a>
-            <a
-              href="/awards"
-              className="text-xs font-medium text-slate-300 transition-colors hover:text-cyan-300 sm:text-sm"
-            >
+            <a href="/awards" className={navLinkClass("/awards")}>
               Awards
             </a>
-            <a
-              href="/leadership"
-              className="text-xs font-medium text-slate-300 transition-colors hover:text-cyan-300 sm:text-sm"
-            >
+            <a href="/leadership" className={navLinkClass("/leadership")}>
               Leadership
             </a>
           </nav>

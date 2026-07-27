@@ -16,11 +16,11 @@ export default function Projects() {
 
   return (
     <main className="flex min-h-screen flex-col sm:h-full sm:min-h-0">
-      <div className="px-6 py-8 sm:px-12">
+      <div className="hidden px-6 py-8 sm:block sm:px-12">
         <h1 className="text-2xl font-extrabold text-white sm:text-3xl">Projects</h1>
       </div>
 
-      <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 px-6 pb-8 sm:grid-cols-2 sm:grid-rows-2 sm:px-12 sm:pb-12">
+      <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 px-6 pt-6 pb-8 sm:grid-cols-2 sm:grid-rows-2 sm:px-12 sm:pt-0 sm:pb-12">
         {PROJECTS.map((project) => (
           <button
             key={project.id}

@@ -46,7 +46,7 @@ export default function Experience() {
 
   return (
     <main className="flex h-full min-h-0 flex-col">
-      <div className="px-6 py-8 sm:px-12">
+      <div className="hidden px-6 py-8 sm:block sm:px-12">
         <h1 className="text-2xl font-extrabold text-white sm:text-3xl">Experience</h1>
       </div>
 
