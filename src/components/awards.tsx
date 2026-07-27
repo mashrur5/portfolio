@@ -49,43 +49,37 @@ function Trophy() {
 function AwardCard({
   award,
   featured,
-  compact,
   onClick,
 }: {
   award: Award;
   featured?: boolean;
-  compact?: boolean;
   onClick: () => void;
 }) {
   return (
     <button
       onClick={onClick}
       className={`h-full w-full overflow-hidden rounded-xl border border-white/10 bg-white/5 text-left backdrop-blur-sm transition-colors hover:border-cyan-300/40 hover:bg-white/[0.08] ${
-        compact ? "flex flex-col justify-center p-2" : featured ? "p-4" : "p-3"
+        featured ? "p-2 sm:p-4" : "p-1.5 sm:p-3"
       }`}
     >
       <p
-        className={`font-bold text-white ${
-          compact
-            ? "line-clamp-2 text-[10px] leading-tight"
-            : featured
-              ? "text-sm sm:text-base"
-              : "text-xs sm:text-sm"
+        className={`line-clamp-2 font-bold text-white sm:line-clamp-none ${
+          featured ? "text-[11px] leading-tight sm:text-sm sm:leading-normal sm:text-base" : "text-[10px] leading-tight sm:text-xs sm:leading-normal sm:text-sm"
         }`}
       >
         {award.title}
       </p>
       <p
-        className={`font-semibold text-cyan-300 ${
-          compact ? "mt-0.5 line-clamp-1 text-[9px]" : featured ? "mt-1 text-xs" : "mt-1 text-[11px]"
+        className={`mt-0.5 line-clamp-1 font-semibold text-cyan-300 sm:line-clamp-none ${
+          featured ? "text-[10px] sm:mt-1 sm:text-xs" : "text-[9px] sm:mt-1 sm:text-[11px]"
         }`}
       >
         {award.organization}
       </p>
       {(award.worth || award.detail) && (
         <p
-          className={`text-slate-400 ${
-            compact ? "line-clamp-1 text-[9px]" : featured ? "mt-0.5 text-xs" : "mt-0.5 text-[11px]"
+          className={`mt-0.5 line-clamp-1 text-slate-400 sm:line-clamp-none ${
+            featured ? "text-[9px] sm:text-xs" : "text-[8px] sm:text-[11px]"
           }`}
         >
           {award.worth ?? award.detail}
@@ -110,11 +104,11 @@ export default function Awards() {
         Awards
       </h1>
 
-      {/* Desktop / tablet: trophy with lines radiating out to scattered cards, centered in the full viewport */}
-      <div className="absolute inset-0 hidden sm:block">
+      {/* Trophy centered with cards scattered around it. Connecting lines only render on tablet/desktop. */}
+      <div className="absolute inset-0">
         <div className="relative mx-auto h-full w-full max-w-6xl px-6 py-4 sm:px-12">
           <svg
-            className="pointer-events-none absolute inset-0 h-full w-full"
+            className="pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
             viewBox="0 0 100 100"
             preserveAspectRatio="none"
           >
@@ -142,7 +136,7 @@ export default function Awards() {
           </svg>
 
           <div
-            className="absolute aspect-square w-28 -translate-x-1/2 -translate-y-1/2 sm:w-32 lg:w-36"
+            className="absolute aspect-square w-20 -translate-x-1/2 -translate-y-1/2 sm:w-32 lg:w-36"
             style={{ top: `${TROPHY_CENTER.top}%`, left: `${TROPHY_CENTER.left}%` }}
           >
             <Trophy />
@@ -156,7 +150,7 @@ export default function Awards() {
               <motion.div
                 key={award.id}
                 className={`absolute -translate-x-1/2 -translate-y-1/2 ${
-                  featured ? "w-56 sm:w-64 lg:w-72" : "w-32 sm:w-36 lg:w-40"
+                  featured ? "w-32 sm:w-64 lg:w-72" : "w-24 sm:w-36 lg:w-40"
                 }`}
                 style={{ top: `${pos.top}%`, left: `${pos.left}%` }}
                 initial={{ opacity: 0, scale: 0.85 }}
@@ -166,31 +160,6 @@ export default function Awards() {
               >
                 <AwardCard award={award} featured={featured} onClick={() => setSelectedId(award.id)} />
               </motion.div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Mobile: small trophy strip, then every card sized to fit one screen with no scroll */}
-      <div className="absolute inset-0 flex flex-col gap-2 px-6 pt-4 pb-3 sm:hidden">
-        <div className="mx-auto aspect-square w-20 shrink-0">
-          <Trophy />
-        </div>
-        <div
-          className="grid min-h-0 flex-1 grid-cols-2 gap-1.5"
-          style={{ gridTemplateRows: "repeat(5, minmax(0, 1fr))" }}
-        >
-          {AWARDS.map((award) => {
-            const featured = award.id === FEATURED_ID;
-            return (
-              <div key={award.id} className={featured ? "col-span-2" : ""}>
-                <AwardCard
-                  award={award}
-                  featured={featured}
-                  compact
-                  onClick={() => setSelectedId(award.id)}
-                />
-              </div>
             );
           })}
         </div>

@@ -121,7 +121,7 @@ export default function ProjectDetailModal({
           >
             <div className="relative h-44 w-full shrink-0 sm:h-64">
               <Image src={project.thumbnail} alt="" fill sizes="768px" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] via-[#05070f]/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] from-15% via-[#05070f]/85 via-60% to-transparent sm:from-0% sm:via-[#05070f]/30 sm:via-50%" />
               <button
                 onClick={onClose}
                 aria-label="Close"
@@ -130,10 +130,12 @@ export default function ProjectDetailModal({
                 ✕
               </button>
               <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                <p className="text-xs font-semibold tracking-wide text-cyan-300 uppercase">
+                <p className="text-xs font-semibold tracking-wide text-cyan-300 uppercase [text-shadow:0_1px_4px_rgba(0,0,0,0.9)]">
                   {project.subtitle}
                 </p>
-                <h2 className="mt-1 text-xl font-extrabold text-white sm:text-2xl">{project.title}</h2>
+                <h2 className="mt-1 text-xl font-extrabold text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.9)] sm:text-2xl">
+                  {project.title}
+                </h2>
               </div>
             </div>
 

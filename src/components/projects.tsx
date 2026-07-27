@@ -34,12 +34,16 @@ export default function Projects() {
               sizes="(max-width: 640px) 100vw, 50vw"
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] via-[#05070f]/55 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] from-15% via-[#05070f]/80 via-60% to-transparent sm:from-0% sm:via-[#05070f]/55 sm:via-50%" />
             <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-              <p className="text-[11px] font-semibold tracking-wide text-cyan-300 uppercase">
+              <p
+                className="text-[11px] font-semibold tracking-wide text-cyan-300 uppercase [text-shadow:0_1px_4px_rgba(0,0,0,0.9)]"
+              >
                 {project.subtitle}
               </p>
-              <h2 className="mt-1 text-lg font-extrabold text-white sm:text-xl">{project.title}</h2>
+              <h2 className="mt-1 text-lg font-extrabold text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.9)] sm:text-xl">
+                {project.title}
+              </h2>
             </div>
           </button>
         ))}

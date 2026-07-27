@@ -60,7 +60,7 @@ export default function AwardDetailModal({
                   onError={() => setFailedSrc(award.thumbnail)}
                 />
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] via-[#05070f]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] from-15% via-[#05070f]/85 via-60% to-transparent sm:from-0% sm:via-[#05070f]/40 sm:via-50%" />
               <button
                 onClick={onClose}
                 aria-label="Close"
@@ -69,10 +69,12 @@ export default function AwardDetailModal({
                 ✕
               </button>
               <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                <p className="text-xs font-semibold tracking-wide text-cyan-300 uppercase">
+                <p className="text-xs font-semibold tracking-wide text-cyan-300 uppercase [text-shadow:0_1px_4px_rgba(0,0,0,0.9)]">
                   {award.organization}
                 </p>
-                <h2 className="mt-1 text-lg font-extrabold text-white sm:text-xl">{award.title}</h2>
+                <h2 className="mt-1 text-lg font-extrabold text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.9)] sm:text-xl">
+                  {award.title}
+                </h2>
               </div>
             </div>
 

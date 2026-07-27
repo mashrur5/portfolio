@@ -51,10 +51,10 @@ export default function Experience() {
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col sm:flex-row">
-        <div className="max-h-72 min-h-0 w-full shrink-0 overflow-y-auto border-b border-white/10 sm:h-full sm:max-h-none sm:w-[360px] sm:border-r sm:border-b-0">
+        <div className="order-2 min-h-0 w-full flex-1 overflow-y-auto border-t border-white/10 sm:order-1 sm:h-full sm:max-h-none sm:w-[360px] sm:flex-none sm:border-t-0 sm:border-r sm:border-b-0">
           <ExperienceList entries={entries} onSelect={setSelectedId} />
         </div>
-        <div className="relative min-h-0 flex-1">
+        <div className="relative order-1 min-h-0 flex-1 sm:order-2">
           <ExperienceMap
             country={country}
             isOverlayOpen={Boolean(selectedId) || Boolean(pendingChoiceIds)}
