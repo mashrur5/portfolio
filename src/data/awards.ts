@@ -60,11 +60,10 @@ export const AWARDS: Award[] = [
     title: "Podium in Inter-School Swimming",
     organization: "Multiple Organizations",
     detail: "3 bronze, 1 silver",
-    thumbnail: "/awards/inter-school-swimming.jpg",
-    thumbnailAspect: 0.6,
+    thumbnail: "/awards/swimming-podium.jpg",
+    thumbnailAspect: 0.9,
     thumbnailPosition: "center top",
     thumbnailFit: "contain",
-    thumbnailMaxHeightRem: 54,
     bullets: [
       { text: "🥈 200m Freestyle Relay in ISD Secondary Swim Meet" },
       { text: "🥉 50m Backstroke Swimming in ISD Secondary Swim Meet" },
@@ -89,8 +88,8 @@ export const AWARDS: Award[] = [
     id: "daily-star-award",
     title: "The Daily Star Award",
     organization: "The Daily Star",
-    thumbnail: "/awards/daily-star-award.jpg",
-    thumbnailAspect: 1.15,
+    thumbnail: "/awards/daily-star-2.jpg",
+    thumbnailAspect: 1600 / 1066,
     bullets: [
       {
         text: "Received The Daily Star Award 2022 for 5A* and 1A in Cambridge O-Level Examination.",

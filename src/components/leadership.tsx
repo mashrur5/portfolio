@@ -64,16 +64,16 @@ function LeadershipCard({ entry }: { entry: LeadershipEntry }) {
         />
         <div className="relative rounded-[15px] border border-white/10 bg-[#0a0e1a] p-5 sm:p-6">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-            <h2 className="text-base font-bold sm:text-lg">
+            <h2 className="text-base font-bold text-white sm:text-lg">
+              {entry.role}
+              <span className="font-normal text-slate-400">, </span>
               <a
                 href={entry.organizationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:underline"
+                className="font-semibold text-cyan-300 hover:underline"
               >
-                {entry.role}
-                <span className="font-normal text-slate-400">, </span>
-                <span className="font-semibold text-cyan-300">{entry.organization}</span>
+                {entry.organization}
               </a>
             </h2>
             <span className="shrink-0 text-xs whitespace-nowrap text-slate-400">{entry.dates}</span>
