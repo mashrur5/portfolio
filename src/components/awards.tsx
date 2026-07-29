@@ -59,31 +59,56 @@ function AwardCard({
     <button
       onClick={onClick}
       className={`h-full w-full overflow-hidden rounded-xl border border-white/10 bg-white/5 text-left backdrop-blur-sm transition-colors hover:border-cyan-300/40 hover:bg-white/[0.08] ${
-        featured ? "p-2 sm:p-4" : "p-1.5 sm:p-3"
+        featured ? "p-4" : "p-3"
       }`}
     >
-      <p
-        className={`line-clamp-2 font-bold text-white sm:line-clamp-none ${
-          featured ? "text-[11px] leading-tight sm:text-sm sm:leading-normal sm:text-base" : "text-[10px] leading-tight sm:text-xs sm:leading-normal sm:text-sm"
-        }`}
-      >
+      <p className={`font-bold text-white ${featured ? "text-sm sm:text-base" : "text-xs sm:text-sm"}`}>
         {award.title}
       </p>
-      <p
-        className={`mt-0.5 line-clamp-1 font-semibold text-cyan-300 sm:line-clamp-none ${
-          featured ? "text-[10px] sm:mt-1 sm:text-xs" : "text-[9px] sm:mt-1 sm:text-[11px]"
-        }`}
-      >
+      <p className={`mt-1 font-semibold text-cyan-300 ${featured ? "text-xs" : "text-[11px]"}`}>
         {award.organization}
       </p>
       {(award.worth || award.detail) && (
-        <p
-          className={`mt-0.5 line-clamp-1 text-slate-400 sm:line-clamp-none ${
-            featured ? "text-[9px] sm:text-xs" : "text-[8px] sm:text-[11px]"
-          }`}
-        >
+        <p className={`mt-0.5 text-slate-400 ${featured ? "text-xs" : "text-[11px]"}`}>
           {award.worth ?? award.detail}
         </p>
+      )}
+    </button>
+  );
+}
+
+// Mobile-only box list: longer titles get a full-width horizontal box so nothing is cut off,
+// shorter titles pair up into square boxes. Each row is either one id (horizontal) or a
+// same-length pair (two square boxes side by side).
+const MOBILE_ROWS: (string | [string, string])[] = [
+  "presidents-scholarship",
+  ["inter-school-swimming", "b24-best-goalkeeper"],
+  "academic-excellence",
+  "best-startup-experience",
+  ["daily-star-award", "lassonde-entrance-scholarship"],
+  "sandcastle-hackathon",
+];
+
+function AwardBox({
+  award,
+  horizontal,
+  onClick,
+}: {
+  award: Award;
+  horizontal?: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`flex w-full flex-col justify-center overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 text-left backdrop-blur-sm transition-colors hover:border-cyan-300/40 hover:bg-white/[0.08] ${
+        horizontal ? "h-24" : "aspect-square"
+      }`}
+    >
+      <p className="text-sm leading-snug font-bold text-white">{award.title}</p>
+      <p className="mt-1 text-xs font-semibold text-cyan-300">{award.organization}</p>
+      {(award.worth || award.detail) && (
+        <p className="mt-0.5 text-xs text-slate-400">{award.worth ?? award.detail}</p>
       )}
     </button>
   );
@@ -104,11 +129,11 @@ export default function Awards() {
         Awards
       </h1>
 
-      {/* Trophy centered with cards scattered around it. Connecting lines only render on tablet/desktop. */}
-      <div className="absolute inset-0">
+      {/* Desktop / tablet: trophy centered with cards scattered around it, connecting lines. */}
+      <div className="absolute inset-0 hidden sm:block">
         <div className="relative mx-auto h-full w-full max-w-6xl px-6 py-4 sm:px-12">
           <svg
-            className="pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
+            className="pointer-events-none absolute inset-0 h-full w-full"
             viewBox="0 0 100 100"
             preserveAspectRatio="none"
           >
@@ -136,7 +161,7 @@ export default function Awards() {
           </svg>
 
           <div
-            className="absolute aspect-square w-20 -translate-x-1/2 -translate-y-1/2 sm:w-32 lg:w-36"
+            className="absolute aspect-square w-28 -translate-x-1/2 -translate-y-1/2 sm:w-32 lg:w-36"
             style={{ top: `${TROPHY_CENTER.top}%`, left: `${TROPHY_CENTER.left}%` }}
           >
             <Trophy />
@@ -150,7 +175,7 @@ export default function Awards() {
               <motion.div
                 key={award.id}
                 className={`absolute -translate-x-1/2 -translate-y-1/2 ${
-                  featured ? "w-32 sm:w-64 lg:w-72" : "w-24 sm:w-36 lg:w-40"
+                  featured ? "w-56 sm:w-64 lg:w-72" : "w-32 sm:w-36 lg:w-40"
                 }`}
                 style={{ top: `${pos.top}%`, left: `${pos.left}%` }}
                 initial={{ opacity: 0, scale: 0.85 }}
@@ -161,6 +186,26 @@ export default function Awards() {
                 <AwardCard award={award} featured={featured} onClick={() => setSelectedId(award.id)} />
               </motion.div>
             );
+          })}
+        </div>
+      </div>
+
+      {/* Mobile: a scrollable stack of boxes, long titles get a full-width box, shorter ones pair up. */}
+      <div className="absolute inset-0 overflow-y-auto sm:hidden">
+        <div className="flex flex-col gap-3 px-6 py-6">
+          {MOBILE_ROWS.map((row, idx) => {
+            if (Array.isArray(row)) {
+              return (
+                <div key={idx} className="grid grid-cols-2 gap-3">
+                  {row.map((id) => {
+                    const award = AWARDS.find((a) => a.id === id)!;
+                    return <AwardBox key={id} award={award} onClick={() => setSelectedId(id)} />;
+                  })}
+                </div>
+              );
+            }
+            const award = AWARDS.find((a) => a.id === row)!;
+            return <AwardBox key={row} award={award} horizontal onClick={() => setSelectedId(row)} />;
           })}
         </div>
       </div>
