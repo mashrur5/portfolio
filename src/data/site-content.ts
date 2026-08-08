@@ -10,10 +10,16 @@ export const siteContent = {
     devpost: "https://devpost.com/mashrurmahtab21",
     discord: "mashrur2108",
     x: "https://x.com/m4_mash",
-    resume: "/resume.pdf",
     transcript: "/transcript.pdf",
   },
 };
+
+export const RESUMES = [
+  { label: "Software Engineering", href: "/resumes/software-engineering.pdf" },
+  { label: "Operations", href: "/resumes/operations.pdf" },
+  { label: "Data Analyst", href: "/resumes/data-analyst.pdf" },
+  { label: "Business Analyst", href: "/resumes/business-analyst.pdf" },
+];
 
 export const education = {
   degree: "International Bachelor of Science in Computer Science",
