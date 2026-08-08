@@ -23,7 +23,7 @@ export const CANADA_EXPERIENCE: ExperienceEntry[] = [
       { text: "myherbalshop.ai", url: "https://myherbalshop.ai" },
     ],
     location: "Belleville, ON",
-    dates: "Apr 2026 – Present",
+    dates: "Apr 2026 – July 2026",
     highlights: [
       "Built the backend and admin panel for the corporate investor site (Node.js, Express, MySQL)",
       "Shipped a cross-platform iOS/Android wellness app with AI-powered features",
