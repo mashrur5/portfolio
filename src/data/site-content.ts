@@ -16,6 +16,7 @@ export const siteContent = {
 
 export const RESUMES = [
   { label: "Software Engineering", href: "/resumes/software-engineering.pdf" },
+  { label: "Product Management", href: "/resumes/product-management.pdf" },
   { label: "Operations", href: "/resumes/operations.pdf" },
   { label: "Data Analyst", href: "/resumes/data-analyst.pdf" },
   { label: "Business Analyst", href: "/resumes/business-analyst.pdf" },
