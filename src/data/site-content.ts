@@ -25,6 +25,6 @@ export const RESUMES = [
 export const education = {
   degree: "International Bachelor of Science in Computer Science",
   school: "Lassonde School of Engineering, York University",
-  gpa: "Cumulative GPA 8.27/9.00",
+  gpa: "Cumulative GPA 3.81/4.00",
   honour: "Member of Dean's Honour Roll",
 };
